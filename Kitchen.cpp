@@ -5,6 +5,27 @@ Kitchen::Kitchen() : ArrayBag<Dish>(), total_prep_time_(0), count_elaborate_(0) 
 }
 
 
+        /**
+* Parameterized constructor.
+* @param filename The name of the input CSV file containing dish
+information.
+* @pre The CSV file must be properly formatted.
+* @post Initializes the kitchen by reading dishes from the CSV file and
+storing them as `Dish*`.
+*/
+        Kitchen::Kitchen(const std::string& filename) {
+
+        };
+
+
+Kitchen::~Kitchen() {
+    
+    for (int i = 0; i < dishes.size();i++) {
+        delete dishes[i];   
+        dishes[i] = nullptr;
+    }
+}
+
 bool Kitchen::newOrder(const Dish& new_dish)
 {
     if (add(new_dish))
@@ -21,6 +42,9 @@ bool Kitchen::newOrder(const Dish& new_dish)
     }
     return false;
 }
+
+
+
 bool Kitchen::serveDish(const Dish& dish_to_remove)
 {
     if (getCurrentSize() == 0)
@@ -147,3 +171,28 @@ void Kitchen::kitchenReport() const
     std::cout << "ELABORATE DISHES: " << calculateElaboratePercentage() << "%" << std::endl;
 }
 
+
+
+
+
+/**
+* Adjusts all dishes in the kitchen based on the specified dietary
+accommodation.
+* @param request A DietaryRequest structure specifying the dietary
+accommodations.
+* @post Calls the `dietaryAccommodations()` method on each dish in the
+kitchen to adjust them accordingly.
+*/
+
+void Kitchen::dietaryAdjustment(const Dish::DietaryRequest& request) {
+
+}
+
+
+/**
+* Displays all dishes currently in the kitchen.
+* @post Calls the `display()` method of each dish.
+*/
+void Kitchen::displayMenu() {
+
+}
