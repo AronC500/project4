@@ -3,6 +3,7 @@
 
 #include "Dish.hpp"
 #include <string>
+#include <vector>
 
 /**
  * @class Dessert
@@ -71,6 +72,49 @@ public:
      */
     bool containsNuts() const;
 
+       /**
+* Displays the dessert's details.
+* @post Outputs the dessert's details, including name, ingredients,
+preparation time, price, cuisine type, flavor profile, sweetness level, and
+whether it contains nuts.
+* The information must be displayed in the following format:
+*
+* Dish Name: [Name of the dish]
+* Ingredients: [Comma-separated list of ingredients]
+Note for all subclasses: When multiple ingredients are removed, at most two replacement
+ingredients should be added, and they should replace the first and second (when applicable)
+occurrences of the ingredients to be removed.
+Step 3: Modify the Kitchen Class
+* Preparation Time: [Preparation time] minutes
+* Price: $[Price, formatted to two decimal places]
+* Cuisine Type: [Cuisine type]
+* Flavor Profile: [Flavor profile: Sweet, Bitter, Sour, Salty, or Umami]
+* Sweetness Level: [Sweetness level]
+* Contains Nuts: [Yes/No]
+*/
+void display() const override;
+
+
+/**
+* Modifies the dessert based on dietary accommodations.
+* @param request A DietaryRequest structure specifying the dietary
+accommodations.
+* @post Adjusts the dessert's attributes to meet the specified dietary
+needs.
+* - If `request.nut_free` is true:
+* - Sets `contains_nuts_` to false.
+* - Removes nuts from `ingredients_`.
+* Nuts are: "Almonds", "Walnuts", "Pecans", "Hazelnuts",
+"Peanuts", "Cashews", "Pistachios".
+* - If `request.low_sugar` is true:
+* - Reduces `sweetness_level_` by 3 (minimum of 0).
+* - If `request.vegan` is true:
+* - Removes dairy and egg ingredients from `ingredients_`.
+* Dairy and egg ingredients are: "Milk", "Eggs", "Cheese",
+"Butter", "Cream", "Yogurt".
+*/
+
+void dietaryAccommodations(const DietaryRequest& request) override;
 
 private:
     FlavorProfile flavor_profile_; ///< The flavor profile of the dessert.

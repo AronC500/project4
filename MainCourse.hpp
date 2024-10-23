@@ -100,6 +100,56 @@ public:
      */
     bool isGlutenFree() const;
 
+  /**
+* Displays the main course's details.
+* @post Outputs the main course's details, including name, ingredients,
+preparation time, price, cuisine type, cooking method, protein type,
+side dishes, and gluten-free status to the standard output.
+* The information must be displayed in the following format:
+*
+* Dish Name: [Name of the dish]
+* Ingredients: [Comma-separated list of ingredients
+* Preparation Time: [Preparation time] minutes
+* Price: $[Price, formatted to two decimal places]
+* Cuisine Type: [Cuisine type]
+* Cooking Method: [Cooking method: e.g., Grilled, Baked, etc.]
+* Protein Type: [Type of protein: e.g., Chicken, Beef, etc.]
+* Side Dishes: [Side dish name] (Category: [Category: e.g., Starches,
+Vegetables])
+* Gluten-Free: [Yes/No]
+*/
+    void display() const override;
+
+
+    /**
+* Modifies the main course based on dietary accommodations.
+* @param request A DietaryRequest structure specifying the dietary
+accommodations.
+* @post Adjusts the main course's attributes to meet the specified
+dietary needs.
+* - If `request.vegetarian` is true:
+* - Changes `protein_type_` to "Tofu".
+* - Searches `ingredients_` for any non-vegetarian
+ingredients and replaces the first occurrence with "Beans". If there are
+other non-vegetarian ingredients, the next non-vegetarian ingredient is
+replaced with "Mushrooms". If there are more, they will be removed
+without substitution.
+* Non-vegetarian ingredients are: "Meat", "Chicken",
+"Fish", "Beef", "Pork", "Lamb", "Shrimp", "Bacon".
+* - If `request.vegan` is true:
+* - Changes `protein_type_` to "Tofu".
+* - Removes dairy and egg ingredients from `ingredients_`.
+* Dairy and egg ingredients are: "Milk", "Eggs", "Cheese",
+"Butter", "Cream", "Yogurt".
+* - If `request.gluten_free` is true:
+* - Sets `gluten_free_` to true.
+* - Removes side dishes from `side_dishes_` whose category
+involves gluten.
+* Gluten-containing side dish categories are: `GRAIN`,
+`PASTA`, `BREAD`, `STARCHES`.
+*/
+
+void dietaryAccommodations(const DietaryRequest& request) override;
 
 
 private:

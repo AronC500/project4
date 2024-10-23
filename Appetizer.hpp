@@ -5,6 +5,7 @@
 #include "Dish.hpp"
 #include <string>
 #include <iomanip> //For std::setprecision and std::fixed
+#include <vector>
 
 
 /**
@@ -74,7 +75,49 @@ public:
      */
     bool isVegetarian() const;
 
- 
+     /**
+    * Displays the appetizer's details.
+    * @post Outputs the appetizer's details, including name, ingredients,
+    preparation time, price, cuisine type, serving style, spiciness level, and
+    vegetarian status, to the standard output.
+    * The information must be displayed in the following format:
+    *
+    * Dish Name: [Name of the dish]
+    * Ingredients: [Comma-separated list of ingredients]
+    * Preparation Time: [Preparation time] minutes
+    * Price: $[Price, formatted to two decimal places]
+    * Cuisine Type: [Cuisine type]
+    * Serving Style: [Serving style: Plated, Family Style, or Buffet]
+    * Spiciness Level: [Spiciness level]
+    * Vegetarian: [Yes/No]
+    */
+   void display() const override;
+
+   /**
+* Modifies the appetizer based on dietary accommodations.
+* @param request A DietaryRequest structure specifying the dietary
+accommodations.
+* @post Adjusts the appetizer's attributes to meet the specified
+MainCourse Class
+dietary needs.
+* - If `request.vegetarian` is true:
+* - Sets `vegetarian_` to true.
+* - Searches `ingredients_` for any non-vegetarian
+ingredients and replaces the first occurrence with "Beans". If there are
+other non-vegetarian ingredients, the next non-vegetarian ingredient is
+replaced with "Mushrooms". If there are more, they will be removed
+without substitution.
+* Non-vegetarian ingredients are: "Meat", "Chicken",
+"Fish", "Beef", "Pork", "Lamb", "Shrimp", "Bacon".
+* - If `request.low_sodium` is true:
+* - Reduces `spiciness_level_` by 2 (minimum of 0).
+* - If `request.gluten_free` is true:
+* - Removes gluten-containing ingredients from
+`ingredients_`.
+* Gluten-containing ingredients are: "Wheat", "Flour",
+"Bread", "Pasta", "Barley", "Rye", "Oats", "Crust".
+*/
+void dietaryAccommodations(const DietaryRequest& request) override;
 
 
 private:
