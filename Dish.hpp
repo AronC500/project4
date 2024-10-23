@@ -116,7 +116,7 @@ public:
      *  Pure virtual function to display dish details.
     * Must be overridden by derived classes.    
     **/
-    virtual void display() = 0;
+    virtual void display() const = 0;
 
 
     /**
