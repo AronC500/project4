@@ -1,6 +1,7 @@
 #ifndef APPETIZER_HPP
 #define APPETIZER_HPP
 
+
 #include "Dish.hpp"
 #include <string>
 #include <iomanip> //For std::setprecision and std::fixed
@@ -73,23 +74,7 @@ public:
      */
     bool isVegetarian() const;
 
-       /**
-   * Displays the appetizer's details.
-   * @post Outputs the appetizer's details, including name, ingredients,
-   preparation time, price, cuisine type, serving style, spiciness level, and
-   vegetarian status, to the standard output.
-   * The information must be displayed in the following format:
-   *
-   * Dish Name: [Name of the dish]
-   * Ingredients: [Comma-separated list of ingredients]
-   * Preparation Time: [Preparation time] minutes
-   * Price: $[Price, formatted to two decimal places]
-   * Cuisine Type: [Cuisine type]
-   * Serving Style: [Serving style: Plated, Family Style, or Buffet]
-   * Spiciness Level: [Spiciness level]
-   * Vegetarian: [Yes/No]
-   */
-  void display() const override;
+ 
 
 
 private:
