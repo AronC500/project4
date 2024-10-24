@@ -11,6 +11,15 @@ Dish::Dish(const std::string& name, const std::vector<std::string>& ingredients,
     setName(name);  // Use setName to validate the name
 }
 
+Dish::~Dish() {}
+
+void Dish::display() {
+
+}
+
+void Dish::dietaryAccommodations(const DietaryRequest& request) {
+
+}
 // Accessor Functions
 std::string Dish::getName() const {
     return name_;
