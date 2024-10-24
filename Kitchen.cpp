@@ -26,7 +26,7 @@ Kitchen::~Kitchen() {
     }
 }
 
-bool Kitchen::newOrder(const Dish* new_dish)
+bool Kitchen::newOrder(Dish* new_dish)
 {
     if (add(new_dish))
     {
@@ -45,7 +45,7 @@ bool Kitchen::newOrder(const Dish* new_dish)
 
 
 
-bool Kitchen::serveDish(const Dish* dish_to_remove)
+bool Kitchen::serveDish(Dish* dish_to_remove)
 {
     if (getCurrentSize() == 0)
     {
