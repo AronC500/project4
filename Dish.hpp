@@ -48,7 +48,7 @@ public:
      * @param cuisine_type The cuisine type of the dish (a CuisineType enum) with default value OTHER.
      * @post The private members are set to the values of the corresponding parameters.
      */
-    Dish(const std::string& name, const std::vector<std::string>& ingredients = {}, int prep_time = 0, double price = 0.0, CuisineType cuisine_type = CuisineType::OTHER);
+    Dish(const std::string& name, const std::vector<std::string>& ingredients = std::vector<std::string>(), int prep_time = 0, double price = 0.0, CuisineType cuisine_type = CuisineType::OTHER);
 
 
     // Accessors
@@ -117,7 +117,7 @@ public:
      *  Pure virtual function to display dish details.
     * Must be overridden by derived classes.    
     **/
-    virtual void display() const = 0;
+    virtual void display() = 0;
 
 
     /**

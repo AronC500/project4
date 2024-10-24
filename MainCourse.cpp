@@ -110,7 +110,7 @@ Vegetables])
 * Gluten-Free: [Yes/No]
 */
 
-void MainCourse::display() const {
+void MainCourse::display(){
     std::cout << "Dish Name: " << getName() << std::endl <<
     "Ingredients: " << IngredientsHelper(getIngredients()) << std::endl <<
     "Preparation Time: " << getPrepTime() << " minutes" << std::endl <<

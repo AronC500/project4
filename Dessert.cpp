@@ -89,7 +89,7 @@ whether it contains nuts.
 * Sweetness Level: [Sweetness level]
 * Contains Nuts: [Yes/No]
 */
-void Dessert::display() const  {
+void Dessert::display()  {
     std::cout << "Dish Name: " << getName() << std::endl <<
     "Ingredients: " << IngredientsHelper(getIngredients()) << std::endl <<
     "Preparation Time: " << getPrepTime() << " minutes" << std::endl <<

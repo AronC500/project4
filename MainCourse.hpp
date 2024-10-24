@@ -5,6 +5,13 @@
 #include <string>
 #include <vector>
 
+
+std::string CookingString(const MainCourse::CookingMethod& m);
+std::string outputSides(const std::vector<MainCourse::SideDish>& mai);
+std::string categoryString(const MainCourse::Category& g);
+std::string IngredientsHelper(const std::vector<std::string>& g);
+
+
 /**
  * @class MainCourse
  * @brief Represents a main course dish, inheriting from Dish.
@@ -118,7 +125,7 @@ side dishes, and gluten-free status to the standard output.
 Vegetables])
 * Gluten-Free: [Yes/No]
 */
-    void display() const override;
+    void display() override;
 
 
     /**

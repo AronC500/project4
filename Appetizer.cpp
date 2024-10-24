@@ -89,7 +89,7 @@ bool Appetizer::isVegetarian() const {
     * Spiciness Level: [Spiciness level]
     * Vegetarian: [Yes/No]
     */
-void Appetizer::display() const {
+void Appetizer::display(){
     std::cout << "Dish Name: " << getName()  <<  std::endl <<
     "Ingredients: " << IngredientsHelper(getIngredients()) << std::endl <<
     "Preparation Time: " << getPrepTime() << " minutes" << std::endl <<
@@ -175,6 +175,10 @@ void Appetizer::dietaryAccommodations(const DietaryRequest& request)  {
 
     }
 }
+
+
+
+
 
 //A helper function that returns the string version of the Serving type of the dish
 //@pre The passed in value have to be an  enum value in enum ServingStyle in the

@@ -8,6 +8,9 @@
 #include <vector>
 
 
+std::string ServingString(const Appetizer::ServingStyle& m);
+std::string IngredientsHelper(const std::vector<std::string>& g);
+
 /**
  * @class Appetizer
  * @brief Represents an appetizer dish, inheriting from Dish.
@@ -91,7 +94,7 @@ public:
     * Spiciness Level: [Spiciness level]
     * Vegetarian: [Yes/No]
     */
-   void display() const override;
+   void display()  override;
 
    /**
 * Modifies the appetizer based on dietary accommodations.

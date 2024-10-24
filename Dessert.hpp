@@ -5,6 +5,11 @@
 #include <string>
 #include <vector>
 
+
+std::string FlavorString(const Dessert::FlavorProfile& m);
+std::string IngredientsHelper(const std::vector<std::string>& g);
+
+
 /**
  * @class Dessert
  * @brief Represents a dessert dish, inheriting from Dish.
@@ -92,7 +97,7 @@ Step 3: Modify the Kitchen Class
 * Sweetness Level: [Sweetness level]
 * Contains Nuts: [Yes/No]
 */
-void display() const override;
+void display()  override;
 
 
 /**
