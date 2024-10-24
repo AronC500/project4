@@ -6,6 +6,7 @@ DO NOT MODIFY THIS FILE. YOU DO NOT HAVE TO SUBMIT THIS FILE
 
 #ifndef ARRAY_BAG_
 #define ARRAY_BAG_
+#include "Dish.hpp"
 #include <iostream>
 #include <vector>
 
@@ -65,8 +66,5 @@ class ArrayBag
    int getIndexOf(const ItemType &target) const;
 
 }; // end ArrayBag
-
-
-
 
 #endif

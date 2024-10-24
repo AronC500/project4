@@ -4,6 +4,9 @@
 #include "Dish.hpp"
 #include <string>
 #include <vector>
+#include "MainCourse.hpp"
+#include "Dessert.hpp"
+#include "Appetizer.hpp"
 
 
 
@@ -54,6 +57,9 @@ public:
      * @param gluten_free Flag indicating if the main course is gluten-free.
      */
     MainCourse(const std::string& name, const std::vector<std::string>& ingredients, const int &prep_time, const double &price, const CuisineType &cuisine_type, const CookingMethod &cooking_method, const std::string& protein_type, const std::vector<SideDish>& side_dishes, const bool &gluten_free);
+
+
+        ~MainCourse() override; 
 
     /**
      * Sets the cooking method of the main course.

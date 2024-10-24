@@ -31,6 +31,9 @@ void MainCourse::setCookingMethod(const CookingMethod &cooking_method) {
     cooking_method_ = cooking_method;
 }
 
+
+MainCourse::~MainCourse() {
+}
 /**
  * @return The cooking method of the main course.
  */

@@ -6,7 +6,9 @@
 #include <string>
 #include <iomanip> //For std::setprecision and std::fixed
 #include <vector>
-
+#include "MainCourse.hpp"
+#include "Dessert.hpp"
+#include "Appetizer.hpp"
 
 
 /**
@@ -40,6 +42,7 @@ public:
      */
     Appetizer(const std::string& name, const std::vector<std::string>& ingredients, const int &prep_time, const double &price, const CuisineType &cuisine_type, const ServingStyle &serving_style, const int &spiciness_level, const bool &vegetarian);
 
+    ~Appetizer() override;
     /**
      * Sets the serving style of the appetizer.
      * @param serving_style The new serving style.

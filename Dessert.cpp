@@ -21,6 +21,9 @@ Dessert::Dessert()
 Dessert::Dessert(const std::string& name, const std::vector<std::string>& ingredients, const int &prep_time, const double &price, const CuisineType &cuisine_type, const FlavorProfile &flavor_profile, const int &sweetness_level, const bool &contains_nuts)
     : Dish(name, ingredients, prep_time, price, cuisine_type), flavor_profile_(flavor_profile), sweetness_level_(sweetness_level), contains_nuts_(contains_nuts) {}
 
+
+Dessert::~Dessert() {
+}
 /**
  * Sets the flavor profile of the dessert.
  * @param flavor_profile The new flavor profile.

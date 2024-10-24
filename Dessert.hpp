@@ -4,6 +4,9 @@
 #include "Dish.hpp"
 #include <string>
 #include <vector>
+#include "MainCourse.hpp"
+#include "Dessert.hpp"
+#include "Appetizer.hpp"
 
 
 
@@ -38,6 +41,7 @@ public:
      */
     Dessert(const std::string& name, const std::vector<std::string>& ingredients, const int &prep_time, const double &price, const CuisineType &cuisine_type, const FlavorProfile &flavor_profile, const int &sweetness_level, const bool &contains_nuts);
 
+    ~Dessert() override;
     /**
      * Sets the flavor profile of the dessert.
      * @param flavor_profile The new flavor profile.

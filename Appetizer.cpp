@@ -23,6 +23,9 @@ Appetizer::Appetizer()
 Appetizer::Appetizer(const std::string& name, const std::vector<std::string>& ingredients, const int &prep_time, const double &price, const CuisineType &cuisine_type, const ServingStyle &serving_style, const int &spiciness_level, const bool &vegetarian)
     : Dish(name, ingredients, prep_time, price, cuisine_type), serving_style_(serving_style), spiciness_level_(spiciness_level), vegetarian_(vegetarian) {}
 
+Appetizer::~Appetizer(){
+    
+}
 /**
  * Sets the serving style of the appetizer.
  * @param serving_style The new serving style.
