@@ -3,9 +3,6 @@
 
 #include "ArrayBag.hpp"
 #include "Dish.hpp"
-#include "Appetizer.hpp"
-#include "Dessert.hpp"
-#include "MainCourse.hpp"
 // for round
 #include <cmath>
 // for reading file
