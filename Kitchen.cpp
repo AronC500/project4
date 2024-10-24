@@ -1,6 +1,6 @@
 #include "Kitchen.hpp"
 
-Kitchen::Kitchen() : ArrayBag<Dish>(), total_prep_time_(0), count_elaborate_(0) {
+Kitchen::Kitchen() : ArrayBag<Dish*>(), total_prep_time_(0), count_elaborate_(0) {
 
 }
 
@@ -13,17 +13,13 @@ information.
 * @post Initializes the kitchen by reading dishes from the CSV file and
 storing them as `Dish*`.
 */
-        Kitchen::Kitchen(const std::string& filename): ArrayBag<Dish>(), total_prep_time_(0), count_elaborate_(0) {
+        Kitchen::Kitchen(const std::string& filename): ArrayBag<Dish*>(), total_prep_time_(0), count_elaborate_(0) {
 
         };
 
 
 Kitchen::~Kitchen() {
-    
-    for (int i = 0; i < dishes.size();i++) {
-        delete dishes[i];   
-        dishes[i] = nullptr;
-    }
+    clear();
 }
 
 bool Kitchen::newOrder(Dish* new_dish)

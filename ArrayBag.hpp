@@ -6,7 +6,6 @@ DO NOT MODIFY THIS FILE. YOU DO NOT HAVE TO SUBMIT THIS FILE
 
 #ifndef ARRAY_BAG_
 #define ARRAY_BAG_
-#include "Dish.hpp"
 #include <iostream>
 #include <vector>
 
@@ -31,12 +30,12 @@ class ArrayBag
    /**
        @return true if new_entry was successfully added to items_, false otherwise
    **/
-   bool add(const ItemType* new_entry);
+   bool add(const ItemType &new_entry);
 
    /**
        @return true if an_entry was successfully removed from items_, false otherwise
       **/
-   bool remove(const ItemType* an_entry);
+   bool remove(const ItemType &an_entry);
 
    /**
        @post item_count_ == 0
@@ -55,7 +54,7 @@ class ArrayBag
 
    protected:
    static const int DEFAULT_CAPACITY = 100; //max size of items_ at 100 by default for this project
-   ItemType* items_[DEFAULT_CAPACITY];      // Array of bag items
+   ItemType items_[DEFAULT_CAPACITY];      // Array of bag items
    int item_count_;                        // Current count of bag items
 
    /**
@@ -67,5 +66,5 @@ class ArrayBag
 
 }; // end ArrayBag
 
-
+#include "ArrayBag.cpp"
 #endif

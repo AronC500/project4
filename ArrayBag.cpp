@@ -1,4 +1,13 @@
+
+/*
+ArrayBag interface for term project
+CSCI 235 Fall 2024
+DO NOT MODIFY THIS FILE. YOU DO NOT HAVE TO SUBMIT THIS FILE
+*/
+
+
 #include "ArrayBag.hpp"
+
 /** default constructor**/
 template<class ItemType>
 ArrayBag<ItemType>::ArrayBag(): item_count_(0)
@@ -27,7 +36,7 @@ bool ArrayBag<ItemType>::isEmpty() const
  @return true if new_entry was successfully added to items_, false otherwise
  **/
 template<class ItemType>
-bool ArrayBag<ItemType>::add(const ItemType* new_entry)
+bool ArrayBag<ItemType>::add(const ItemType& new_entry)
 {
    if (contains(new_entry)) {
        return false;
@@ -47,18 +56,14 @@ bool ArrayBag<ItemType>::add(const ItemType* new_entry)
  @return true if an_entry was successfully removed from items_, false otherwise
  **/
 template<class ItemType>
-bool ArrayBag<ItemType>::remove(const ItemType* an_entry)
+bool ArrayBag<ItemType>::remove(const ItemType& an_entry)
 {
    int found_index = getIndexOf(an_entry);
 	bool can_remove = !isEmpty() && (found_index > -1);
 	if (can_remove)
 	{
-
-
 		item_count_--;
-        delete items_[found_index]; 
-        items_[found_index] = items_[item_count_ ]; 
-        items_[item_count_] = nullptr; 
+		items_[found_index] = items_[item_count_];
 	}  // end if
 
 	return can_remove;
@@ -70,10 +75,6 @@ bool ArrayBag<ItemType>::remove(const ItemType* an_entry)
 template<class ItemType>
 void ArrayBag<ItemType>::clear()
 {
-    for (int i = 0; i < item_count_; i++) {
-        delete items_[i]; 
-        items_[i] = nullptr; 
-    }
 	item_count_ = 0;
 }  // end clear
 
@@ -87,7 +88,7 @@ int ArrayBag<ItemType>::getFrequencyOf(const ItemType& an_entry) const
    int curr_index = 0;       // Current array index
    while (curr_index < item_count_)
    {
-      if (*items_[curr_index] == an_entry)
+      if (items_[curr_index] == an_entry)
       {
          frequency++;
       }  // end if
@@ -124,7 +125,7 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
    while (!found && (search_index < item_count_))
    {
 
-      if (*items_[search_index] == target)
+      if (items_[search_index] == target)
       {
          found = true;
          result = search_index;
@@ -137,4 +138,3 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
 
    return result;
 }  // end getIndexOf
-
