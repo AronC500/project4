@@ -6,10 +6,6 @@
 #include <vector>
 
 
-std::string CookingString(const MainCourse::CookingMethod& m);
-std::string outputSides(const std::vector<MainCourse::SideDish>& mai);
-std::string categoryString(const MainCourse::Category& g);
-std::string IngredientsHelper(const std::vector<std::string>& g);
 
 
 /**

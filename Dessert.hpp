@@ -6,9 +6,6 @@
 #include <vector>
 
 
-std::string FlavorString(const Dessert::FlavorProfile& m);
-std::string IngredientsHelper(const std::vector<std::string>& g);
-
 
 /**
  * @class Dessert

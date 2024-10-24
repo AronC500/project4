@@ -90,12 +90,44 @@ whether it contains nuts.
 * Contains Nuts: [Yes/No]
 */
 void Dessert::display()  {
+    std::string ingredList = "";
+    std::vector<std::string> g = getIngredients();
+    for (int i = 0; i < g.size(); i++) {
+        if (i != 0) {
+            ingredList += ", "; 
+        }
+        ingredList += g[i];
+    }
+
+    FlavorProfile m = getFlavorProfile();
+    std::string x;
+    switch(m) {
+        case Dessert::FlavorProfile::SWEET:
+        x = "Sweet";
+        break;
+        case Dessert::FlavorProfile::SOUR:
+        x = "Sour";
+        break;
+        case Dessert::FlavorProfile::BITTER:
+        x =  "Bitter";
+        break;
+        case Dessert::FlavorProfile::SALTY:
+        x = "Salty";
+        break;
+        case Dessert::FlavorProfile::UMAMI:
+        x = "Umami";
+        break;
+        default:
+        x = "UNKNOWN";
+        break;
+      }
+
     std::cout << "Dish Name: " << getName() << std::endl <<
-    "Ingredients: " << IngredientsHelper(getIngredients()) << std::endl <<
+    "Ingredients: " << ingredList << std::endl <<
     "Preparation Time: " << getPrepTime() << " minutes" << std::endl <<
     "Price: $" << std::fixed << std::setprecision(2) << getPrice() << std::endl << 
     "Cuisine Type: " << getCuisineType() << std::endl <<
-    "Flavor Profile: " << FlavorString(getFlavorProfile()) << std::endl <<
+    "Flavor Profile: " << x << std::endl <<
     "Sweetness Level: " << sweetness_level_ << std::endl <<
     "Contains Nuts: " << (containsNuts() ? "Yes" : "No") << std::endl;
     
@@ -158,43 +190,4 @@ void Dessert::dietaryAccommodations(const DietaryRequest& request) {
 
 }
 
-//A helper function that returns the string version of the Flavor type of the
-//dish
-//@pre The passed in value have to be an  enum value in enum FlavorProfile in the 
-//Dessert class
-//@param const Dessert::FlavorProfile& m, a enum value in FlavorProfile that describes the 
-//type of value the dish is in and ensures the value remains unchanged.
-//@return returns a string
-//@post returns a string version of the options in enum FlavorProfile  in the Dessert
-//class
-std::string FlavorString(const Dessert::FlavorProfile& m) {
-      switch(m) {
-        case Dessert::FlavorProfile::SWEET:
-        return "Sweet";
-        case Dessert::FlavorProfile::SOUR:
-        return "Sour";
-        case Dessert::FlavorProfile::BITTER:
-        return "Bitter";
-        case Dessert::FlavorProfile::SALTY:
-        return "Salty";
-        case Dessert::FlavorProfile::UMAMI:
-        return "Umami";
-        default:
-        return "UNKNOWN";
-      }
-    
-}
 
-
-
-
-std::string IngredientsHelper(const std::vector<std::string>& g) {
-    std::string ingredList;
-    for (int i = 0; i < g.size(); i++) {
-        if (i != 0) {
-            ingredList += ", "; 
-        }
-        ingredList += g[i];
-    }
-    return ingredList;
-}

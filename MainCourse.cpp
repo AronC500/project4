@@ -111,14 +111,88 @@ Vegetables])
 */
 
 void MainCourse::display(){
+    std::string ingredList = "";
+    std::vector<std::string> g = getIngredients();
+    for (int i = 0; i < g.size(); i++) {
+        if (i != 0) {
+            ingredList += ", "; 
+        }
+        ingredList += g[i];
+    }
+
+    CookingMethod m = getCookingMethod();
+    std::string x;
+    switch(m) {
+        case MainCourse::CookingMethod::GRILLED:
+        x =  "Grilled";
+        break;
+        case MainCourse::CookingMethod::RAW:
+        x = "Raw";
+        break;
+         case MainCourse::CookingMethod::STEAMED:
+        x =  "Steamed";
+        break;
+        case MainCourse::CookingMethod::FRIED:
+        x = "Fried";
+        break;
+        case MainCourse::CookingMethod::BAKED:
+        x =  "Baked";
+        break;
+        default:
+        x = "UNKNOWN";
+        break;
+      }
+
+
+    std::vector<MainCourse::SideDish> mai =  side_dishes_;
+    std::string sidestring = "";
+    for (int i = 0; i < mai.size();i++) {
+        std::string me;
+            if (mai[i].category ==  MainCourse::Category::GRAIN ) {
+                me = "Grain";
+            }
+            else if (mai[i].category ==  MainCourse::Category::PASTA ) {
+                me = "Pasta";
+            }
+            else if (mai[i].category ==  MainCourse::Category::LEGUME) {
+                me = "Legume";
+            }
+            else if (mai[i].category ==  MainCourse::Category::BREAD ) {
+                me = "Bread";
+            }
+            else if (mai[i].category ==  MainCourse::Category::SALAD ) {
+                me = "Salad";
+            }
+            else if (mai[i].category ==  MainCourse::Category::SOUP ) {
+                me = "Soup";
+            }
+            else if (mai[i].category ==  MainCourse::Category::STARCHES ) {
+                me = "Starches";
+            }
+            else if (mai[i].category ==  MainCourse::Category::VEGETABLE ) {
+                me = "Vegetable";
+            }
+            else {
+                me = "UNKNOWN";
+            }
+
+            sidestring += mai[i].name + " (Category: " + me + ")";
+            if (i < mai.size() - 1) {
+                sidestring += ", "; 
+            }
+    }
+
+
+
+
     std::cout << "Dish Name: " << getName() << std::endl <<
-    "Ingredients: " << IngredientsHelper(getIngredients()) << std::endl <<
+    "Ingredients: " << ingredList << std::endl <<
     "Preparation Time: " << getPrepTime() << " minutes" << std::endl <<
     "Price: $" << std::fixed << std::setprecision(2) << getPrice() << std::endl << 
     "Cuisine Type: " << getCuisineType() << std::endl <<
-    "Cooking Method: " << CookingString(getCookingMethod()) << std::endl <<
+    "Cooking Method: " << x << std::endl <<
     "Protein Type: " << getProteinType() << std::endl <<
-    "Side Dishes: " << outputSides(getSideDishes()) << std::endl <<
+    "Side Dishes: " << sidestring << std::endl <<
     "Gluten-Free: " << (isGlutenFree() ? "Yes" : "No") << std::endl;
     
 }
@@ -210,95 +284,7 @@ void MainCourse::dietaryAccommodations(const DietaryRequest& request)  {
 }
 
 
-//A helper function that returns the string version of the Cooking Method of the
-//dish
-//@pre The passed in value have to be an  enum value in enum CookingMethod in the 
-//Main Course class
-//@param const MainCourse::CookingMethod& m, a enum value in CookingMethod that describes the 
-//Cooking Method that is used  for the Main Course and ensures the value remain unchanged.
-//@return returns a string
-//@post returns a string version of the options in enum CookingMethod  in the Main Course
-//class
-std::string CookingString(const MainCourse::CookingMethod& m) {
-      switch(m) {
-        case MainCourse::CookingMethod::GRILLED:
-        return "Grilled";
-        case MainCourse::CookingMethod::RAW:
-        return "Raw";
-         case MainCourse::CookingMethod::STEAMED:
-        return "Steamed";
-        case MainCourse::CookingMethod::FRIED:
-        return "Fried";
-        case MainCourse::CookingMethod::BAKED:
-        return "Baked";
-        default:
-        return "UNKNOWN";
-      }
-    
-}
 
 
-//A helper function that returns a string of sideDishes with their categories 
-//in the right format separated by commas.
-//@pre The passed in value have to be an object of the class MainCourse
-//@param const MainCourse& mai ensures the passed in value is not changed and 
-//an MainCourse object used is to get it's specific .getSideDishes() return values.
-//@return A string cointaining all the sidedishes of const MainCourse& mai.
-//@post A string containing either an empty string or an string with all the 
-//sidedishes with their category with each sidedishes being separated by
-//an comma if not empty.
-std::string outputSides(const std::vector<MainCourse::SideDish>& mai) {
-  std::string sidestring = "";
-    for (int i = 0; i < mai.size();i++) {
-            sidestring += mai[i].name + " (Category: " + categoryString(mai[i].category) + ")";
-            if (i < mai.size() - 1) {
-                sidestring += ", "; 
-            }
-    }
-    return sidestring;
-}
-
-
-//A helper function that returns the string version of the category type of the dish
-//@pre The passed in value have to be an  enum value in enum Category in the Main Course
-//class
-//@param const MainCourse::Category& g, a enum value in Category that describes the category
-//the MainCourse food is in and ensure the value remain unchanged.
-//@return returns a string
-//@post returns a string version of the options in enum Category in the Main Course
-//class
-std::string categoryString(const MainCourse::Category& g) {
-    switch(g) {
-        case MainCourse::Category::GRAIN:
-        return "Grain";
-        case MainCourse::Category::PASTA:
-        return "Pasta";
-        case MainCourse::Category::LEGUME:
-        return "Legume";
-        case MainCourse::Category::BREAD:
-        return "Bread";
-        case MainCourse::Category::SALAD:
-        return "Salad";
-        case MainCourse::Category::SOUP:
-        return "Soup";
-        case MainCourse::Category::STARCHES:
-        return "Starches";
-        case MainCourse::Category::VEGETABLE:
-        return "Vegetable";
-        default:
-        return "UNKNOWN";
-    }
-}
-
-std::string IngredientsHelper(const std::vector<std::string>& g) {
-    std::string ingredList;
-    for (int i = 0; i < g.size(); i++) {
-        if (i != 0) {
-            ingredList += ", "; 
-        }
-        ingredList += g[i];
-    }
-    return ingredList;
-}
 
 

@@ -8,8 +8,6 @@
 #include <vector>
 
 
-std::string ServingString(const Appetizer::ServingStyle& m);
-std::string IngredientsHelper(const std::vector<std::string>& g);
 
 /**
  * @class Appetizer

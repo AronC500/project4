@@ -90,12 +90,40 @@ bool Appetizer::isVegetarian() const {
     * Vegetarian: [Yes/No]
     */
 void Appetizer::display(){
+    std::string ingredList = "";
+    std::vector<std::string> g = getIngredients();
+    for (int i = 0; i < g.size(); i++) {
+        if (i != 0) {
+            ingredList += ", "; 
+        }
+        ingredList += g[i];
+    }
+
+    ServingStyle m = getServingStyle();
+    std::string x;
+         
+    
+
+    switch (m) {
+        case Appetizer::ServingStyle::PLATED:
+        x =  "Plated";
+        break;
+        case Appetizer::ServingStyle::FAMILY_STYLE:
+        x = "Family Style";
+        break;
+        case Appetizer::ServingStyle::BUFFET:
+        x = "Buffet";
+        break;
+        default:
+        x = "UNKNOWN";
+        break;
+    }
     std::cout << "Dish Name: " << getName()  <<  std::endl <<
-    "Ingredients: " << IngredientsHelper(getIngredients()) << std::endl <<
+    "Ingredients: " << ingredList  << std::endl <<
     "Preparation Time: " << getPrepTime() << " minutes" << std::endl <<
     "Price: $" << std::fixed << std::setprecision(2) << getPrice() << std::endl << 
     "Cuisine Type: " << getCuisineType() << std::endl <<
-    "Serving Style: " << ServingString(getServingStyle()) << std::endl <<
+    "Serving Style: " << x << std::endl <<
     "Spiciness Level: " << spiciness_level_ << std::endl <<
     "Vegetarian: " << (isVegetarian() ? "Yes" : "No") << std::endl;
     
@@ -177,37 +205,3 @@ void Appetizer::dietaryAccommodations(const DietaryRequest& request)  {
 }
 
 
-
-
-
-//A helper function that returns the string version of the Serving type of the dish
-//@pre The passed in value have to be an  enum value in enum ServingStyle in the
-//Appetizer class
-//@param const Appetizer::ServingStyle& m, a enum value in ServingStyle that describes the
-//Serving style the Appetizer food is in and ensure the value remain unchanged.
-//@return returns a string
-//@post returns a string version of the options in enum ServingStyle in the Appetizer
-//class
-std::string ServingString(const Appetizer::ServingStyle& m) {
-      switch(m) {
-        case Appetizer::ServingStyle::PLATED:
-        return "Plated";
-        case Appetizer::ServingStyle::FAMILY_STYLE:
-        return "Family Style";
-        case Appetizer::ServingStyle::BUFFET:
-        return "Buffet";
-        default:
-        return "UNKNOWN";
-      }
-}
-
-std::string IngredientsHelper(const std::vector<std::string>& g) {
-    std::string ingredList;
-    for (int i = 0; i < g.size(); i++) {
-        if (i != 0) {
-            ingredList += ", "; 
-        }
-        ingredList += g[i];
-    }
-    return ingredList;
-}
