@@ -28,7 +28,7 @@ Kitchen::~Kitchen() {
 
 bool Kitchen::newOrder(const Dish* new_dish)
 {
-    if (add(*new_dish))
+    if (add(new_dish))
     {
         total_prep_time_ += new_dish->getPrepTime();
         //std::cout<< "Dish added: "<<new_dish.getName() << std::endl;
@@ -51,7 +51,7 @@ bool Kitchen::serveDish(const Dish* dish_to_remove)
     {
         return false;
     }
-    if (remove(*dish_to_remove))
+    if (remove(dish_to_remove))
     {
         total_prep_time_ -= dish_to_remove->getPrepTime();
         if (dish_to_remove->getIngredients().size() >= 5 && dish_to_remove->getPrepTime() >= 60)

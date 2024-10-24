@@ -31,12 +31,12 @@ class ArrayBag
    /**
        @return true if new_entry was successfully added to items_, false otherwise
    **/
-   bool add(const ItemType &new_entry);
+   bool add(const ItemType* new_entry);
 
    /**
        @return true if an_entry was successfully removed from items_, false otherwise
       **/
-   bool remove(const ItemType &an_entry);
+   bool remove(const ItemType* an_entry);
 
    /**
        @post item_count_ == 0
