@@ -12,7 +12,7 @@
 
 
 
-class Kitchen : public ArrayBag<Dish> {
+class Kitchen : public ArrayBag<Dish*> {
     public:
         Kitchen();
 
