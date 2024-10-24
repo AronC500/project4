@@ -26,14 +26,14 @@ Kitchen::~Kitchen() {
     }
 }
 
-bool Kitchen::newOrder(const Dish& new_dish)
+bool Kitchen::newOrder(const Dish* new_dish)
 {
-    if (add(new_dish))
+    if (add(*new_dish))
     {
-        total_prep_time_ += new_dish.getPrepTime();
+        total_prep_time_ += new_dish->getPrepTime();
         //std::cout<< "Dish added: "<<new_dish.getName() << std::endl;
         //if the new dish has 5 or more ingredients AND takes an hour or more to prepare, increment count_elaborate_
-        if (new_dish.getIngredients().size() >= 5 && new_dish.getPrepTime() >= 60)
+        if (new_dish->getIngredients().size() >= 5 && new_dish->getPrepTime() >= 60)
         {
             //std::cout << "Elaborate dish added: "<<new_dish.getName() << std::endl;
             count_elaborate_++;
@@ -45,16 +45,16 @@ bool Kitchen::newOrder(const Dish& new_dish)
 
 
 
-bool Kitchen::serveDish(const Dish& dish_to_remove)
+bool Kitchen::serveDish(const Dish* dish_to_remove)
 {
     if (getCurrentSize() == 0)
     {
         return false;
     }
-    if (remove(dish_to_remove))
+    if (remove(*dish_to_remove))
     {
-        total_prep_time_ -= dish_to_remove.getPrepTime();
-        if (dish_to_remove.getIngredients().size() >= 5 && dish_to_remove.getPrepTime() >= 60)
+        total_prep_time_ -= dish_to_remove->getPrepTime();
+        if (dish_to_remove->getIngredients().size() >= 5 && dish_to_remove->getPrepTime() >= 60)
         {
             count_elaborate_--;
         }
@@ -139,7 +139,7 @@ int Kitchen::releaseDishesBelowPrepTime(const int& prep_time)
         if (items_[i]->getPrepTime() < prep_time)
         {
             count++;
-            serveDish(*items_[i]);
+            serveDish(items_[i]);
         }
     }
     return count;
@@ -153,7 +153,7 @@ int Kitchen::releaseDishesOfCuisineType(const std::string& cuisine_type)
         if (items_[i]->getCuisineType() == cuisine_type)
         {
             count++;
-            serveDish(*items_[i]);
+            serveDish(items_[i]);
         }
     }
     return count;

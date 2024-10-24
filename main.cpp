@@ -23,8 +23,7 @@ int main() {
         myAppetizer2.dietaryAccommodations({true,false});
 
 
-    MainCourse myAppetizer3("rawjna", {"Tomarwarto", "Basil"} , 15, 7.50, Dish::ITALIAN, MainCourse::RAW, "Chicken",{{"Mashed Potatoes",  MainCourse::Category::STARCHES},{"Green Beans",  MainCourse::Category::VEGETABLE}
-    }, true);
+    MainCourse myAppetizer3("rawjna", {"Tomarwarto", "Basil"} , 15, 7.50, Dish::ITALIAN, MainCourse::RAW, "Chicken",{{"Mashed Potatoes",  MainCourse::Category::STARCHES},{"Green Beans",  MainCourse::Category::VEGETABLE}}, true);
 
     myAppetizer3.display();
     myAppetizer3.dietaryAccommodations({});

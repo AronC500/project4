@@ -48,9 +48,9 @@ kitchen to adjust them accordingly.
 * Displays all dishes currently in the kitchen.
 * @post Calls the `display()` method of each dish.
 */
-void    displayMenu();
-        bool newOrder(const Dish& new_dish);
-        bool serveDish(const Dish& dish_to_remove);
+        void displayMenu();
+        bool newOrder(const Dish* new_dish);
+        bool serveDish(const Dish* dish_to_remove);
         int getPrepTimeSum() const;
         int calculateAvgPrepTime() const;
         int elaborateDishCount() const;
