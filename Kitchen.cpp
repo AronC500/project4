@@ -13,7 +13,7 @@ information.
 * @post Initializes the kitchen by reading dishes from the CSV file and
 storing them as `Dish*`.
 */
-        Kitchen::Kitchen(const std::string& filename) {
+        Kitchen::Kitchen(const std::string& filename): ArrayBag<Dish>(), total_prep_time_(0), count_elaborate_(0) {
 
         };
 
