@@ -54,7 +54,7 @@ class ArrayBag
 
    protected:
    static const int DEFAULT_CAPACITY = 100; //max size of items_ at 100 by default for this project
-   ItemType items_[DEFAULT_CAPACITY];      // Array of bag items
+   ItemType* items_[DEFAULT_CAPACITY];      // Array of bag items
    int item_count_;                        // Current count of bag items
 
    /**

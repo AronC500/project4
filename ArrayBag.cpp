@@ -43,7 +43,7 @@ bool ArrayBag<ItemType>::add(const ItemType& new_entry)
 	bool has_room = (item_count_ < DEFAULT_CAPACITY);
 	if (has_room)
 	{
-		items_[item_count_] = new_entry;
+		*items_[item_count_] = new_entry;
 		item_count_++;
         return true;
 	}  // end if
@@ -124,7 +124,7 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
    while (!found && (search_index < item_count_))
    {
 
-      if (items_[search_index] == target)
+      if (*items_[search_index] == target)
       {
          found = true;
          result = search_index;

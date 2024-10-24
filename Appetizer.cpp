@@ -1,4 +1,6 @@
 #include "Appetizer.hpp"
+#include <string>
+#include <vector>
 
 /**
  * Default constructor.

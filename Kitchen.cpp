@@ -79,7 +79,7 @@ int Kitchen::calculateAvgPrepTime() const
     double total_prep_time_ = 0;
     for (int i = 0; i < getCurrentSize(); i++)
     {
-        total_prep_time_ += items_[i].getPrepTime();
+        total_prep_time_ += items_[i]->getPrepTime();
     }
     total_prep_time_ = total_prep_time_ / getCurrentSize();
     // std::cout<< "Total prep time: "<<total_prep_time_ << std::endl;
@@ -123,7 +123,7 @@ int Kitchen::tallyCuisineTypes(const std::string& cuisine_type) const{
     int count = 0;
     for (int i = 0; i < getCurrentSize(); i++)
     {
-        if (items_[i].getCuisineType() == cuisine_type)
+        if (items_[i]->getCuisineType() == cuisine_type)
         {
             count++;
         }
@@ -136,10 +136,10 @@ int Kitchen::releaseDishesBelowPrepTime(const int& prep_time)
     int num= getCurrentSize();
     for (int i = 0; i < num; i++)
     {
-        if (items_[i].getPrepTime() < prep_time)
+        if (items_[i]->getPrepTime() < prep_time)
         {
             count++;
-            serveDish(items_[i]);
+            serveDish(*items_[i]);
         }
     }
     return count;
@@ -150,10 +150,10 @@ int Kitchen::releaseDishesOfCuisineType(const std::string& cuisine_type)
     int count = 0;
     for (int i = 0; i < getCurrentSize(); i++)
     {
-        if (items_[i].getCuisineType() == cuisine_type)
+        if (items_[i]->getCuisineType() == cuisine_type)
         {
             count++;
-            serveDish(items_[i]);
+            serveDish(*items_[i]);
         }
     }
     return count;
